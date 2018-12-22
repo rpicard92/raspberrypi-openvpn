@@ -1,0 +1,20 @@
+- name: "REMOVE_CLIENT_CONFIG"
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: "REMOVE_CA_CERT"
+    command: rm ca.crt
+    become: true
+    become_user: root
+  - name: "REMOVE_LOCAL_CLIENT_CERT"
+    command: rm client2.crt
+    become: true
+    become_user: root
+  - name: "REMOVE_LOCAL_CLIENT_KEY"
+    command: rm client2.key
+    become: true
+    become_user: root
+  - name: "REMOVE_LOCAL_TA_CERT"
+    command: rm ta.key
+    become: true
+    become_user: root

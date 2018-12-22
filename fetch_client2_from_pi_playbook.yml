@@ -1,0 +1,29 @@
+- name: FETCH_CLIENT2
+  hosts: pi
+  tasks:
+    - fetch: 
+        src: /etc/openvpn/easy-rsa/keys/ca.crt
+        dest: ca.crt
+        flat: yes
+      become: true
+      become_user: root
+    - fetch:
+        src: /etc/openvpn/easy-rsa/keys/client2.crt
+        dest: client2.crt
+        flat: yes
+      become: true
+      become_user: root
+    - fetch:
+        src: /etc/openvpn/easy-rsa/keys/client2.key
+        dest: client2.key
+        flat: yes
+      become: true
+      become_user: root
+    - fetch:
+        src: /etc/openvpn/easy-rsa/keys/ta.key
+        dest: ta.key
+        flat: yes
+      become: true
+      become_user: root
+
+    

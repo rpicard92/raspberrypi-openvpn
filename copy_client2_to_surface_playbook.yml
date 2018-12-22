@@ -1,0 +1,24 @@
+- name: "COPY_CLIENT2_TO_SURFACE"
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: "COPY_CA_CERT"
+    command: cp ca.crt "/mnt/c/Users/Ron/Desktop/OpenVPN/ca.crt"
+    become: true
+    become_user: root
+  - name: "COPY_CLIENT_CERT"
+    command: cp client2.crt "/mnt/c/Users/Ron/Desktop/OpenVPN/client2.crt"
+    become: true
+    become_user: root
+  - name: "COPY_CLIENT_KEY"
+    command: cp client2.key "/mnt/c/Users/Ron/Desktop/OpenVPN/client2.key"
+    become: true
+    become_user: root
+  - name: "COPY_TA_KEY"
+    command: cp ta.key "/mnt/c/Users/Ron/Desktop/OpenVPN/ta.key"
+    become: true
+    become_user: root
+  - name: "COPY_CLIENT_CONFIG"
+    command: cp client.ovpn "/mnt/c/Users/Ron/Desktop/OpenVPN/client.ovpn"
+    become: true
+    become_user: root

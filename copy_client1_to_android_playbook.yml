@@ -1,0 +1,20 @@
+- name: "COPY_CLIENT1_TO_ANDROID"
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: "COPY_CA_CERT"
+    command: scp -o Port=2222 ca.crt root@192.168.0.7:/sdcard/OpenVPN
+    become: true
+    become_user: root
+  - name: "COPY_CLIENT_CERT"
+    command: scp -o Port=2222 client1.crt root@192.168.0.7:/sdcard/OpenVPN
+    become: true
+    become_user: root
+  - name: "COPY_CLIENT_KEY"
+    command: scp -o Port=2222 client1.key root@192.168.0.7:/sdcard/OpenVPN
+    become: true
+    become_user: root
+  - name: "COPY_TA_KEY"
+    command: scp -o Port=2222 ta.key root@192.168.0.7:/sdcard/OpenVPN
+    become: true
+    become_user: root

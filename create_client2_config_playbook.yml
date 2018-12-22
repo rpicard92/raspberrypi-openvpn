@@ -1,0 +1,38 @@
+- name: "CREATE_CLIENT2_CONFIG"
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  
+    - name: "CREATE_CONFIG_FILE"
+      file: 
+        path: client.conf
+        state: touch
+      become: true
+      become_user: root
+
+    - lineinfile:
+        path: client.conf
+        line: '{{ item }}'
+      with_items:
+        - client
+        - dev tun
+        - proto tcp
+        - remote foo.com 1194
+        - resolv-retry infinite
+        - nobind
+        - persist-key
+        - persist-tun
+        - ca ca.crt
+        - cert client2.crt
+        - key client2.key
+        - remote-cert-tls server
+        - tls-auth ta.key 1
+        - cipher AES-256-CBC
+        - verb 3
+      become: true
+      become_user: root
+        
+    - name: "MAKE_OVPN_VERSION"
+      command: cp client.conf client.ovpn
+      become: true
+      become_user: root

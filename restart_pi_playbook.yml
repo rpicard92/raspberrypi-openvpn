@@ -1,0 +1,8 @@
+- name: REBOOT
+  hosts: pi
+  tasks:
+
+    - name: "REBOOT"
+      command: /bin/bash -c "reboot"
+      become: true
+      become_user: root
